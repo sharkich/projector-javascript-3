@@ -1,21 +1,25 @@
 'use strict';
 
-// bla bla bla
-console.log(1);
+var zxc = 322;
 
-// bla bla bla
-console.log(3);
-console.log(4); // bla bla bla console.log(5);
+console.log('zxc => ', zxc);
 
-// TODO: Fix it(!)
-console.log(5);
+ {
+    let a;
+    console.log('a -> ', a);
+    a = 1;
+    console.log('a -> ', a);
 
-/*
-    bla bla bla
-    bla bla bla
-    console.log(5);
-*/
+    const _$b_$1_$2_ABC_3$ = 2;
 
-// 1. Readability
-// 2. Debuging
-// 3. TODO
+    var zxc = 322;
+
+    const a1 = 1;
+    const A1 = 1;
+
+    var zxc = 123;
+ }
+
+ {
+    console.log('zxc => ', zxc);
+ }
