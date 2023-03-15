@@ -1,21 +1,3 @@
-// 'use strict'
-// function recursiveOddSumTo(number) {
-//     if (number === 1) {return number;}
-//     let sum = 0;
-//     let currentOddNumber = 1;
-//     function recursiveSum(recLimitNumber) {
-//          if (currentOddNumber < recLimitNumber) {
-//             sum += currentOddNumber;
-//             currentOddNumber += 2;
-//             recursiveSum(recLimitNumber);
-//         } else {
-//             return
-//         }
-//     }
-//     recursiveSum(number);
-//     return sum;
-// }
-
 'use strict'
 const recursiveOddSumTo = (number) => {
     if (number === 1) {return 1}
@@ -36,6 +18,3 @@ const iterativeOddSumTo = (number) => {
     }
     return sum;
 }
-
-console.log(recursiveOddSumTo(1));
-console.log(iterativeOddSumTo(1));
