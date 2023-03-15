@@ -1,31 +1,41 @@
+// 'use strict'
+// function recursiveOddSumTo(number) {
+//     if (number === 1) {return number;}
+//     let sum = 0;
+//     let currentOddNumber = 1;
+//     function recursiveSum(recLimitNumber) {
+//          if (currentOddNumber < recLimitNumber) {
+//             sum += currentOddNumber;
+//             currentOddNumber += 2;
+//             recursiveSum(recLimitNumber);
+//         } else {
+//             return
+//         }
+//     }
+//     recursiveSum(number);
+//     return sum;
+// }
+
 'use strict'
-function recursiveOddSumTo(number) {
-    let sum = 1;
-    let currentOddNumber = 1;
-    let limitNumber = number;
-    number % 2 === 0 ? limitNumber -= 1 : limitNumber -= 2;  
-    function recursiveSum(recLimitNumber) {
-        if (currentOddNumber < limitNumber) {
-            currentOddNumber += 2;
-            sum += currentOddNumber;
-            recursiveSum(recLimitNumber);
-        } else {
-            return
-        }
+const recursiveOddSumTo = (number) => {
+    if (number === 1) {return 1}
+    if (number % 2 === 1) {
+      return number + recursiveOddSumTo(number - 2);
+    } else {
+      return recursiveOddSumTo(number - 1);
     }
-    recursiveSum(limitNumber);
-    return sum;
 }
 
-
-function iterativeOddSumTo(number) {
-    let sum = 1;
+const iterativeOddSumTo = (number) => {
+    if (number === 1) {return 1};
+    let sum = 0;
     let currentOddNumber = 1;
-    let limitNumber = number;
-    number % 2 === 0 ? limitNumber -= 1 : limitNumber -= 2;
-    while(currentOddNumber < limitNumber) {
-        currentOddNumber += 2;
+    while(currentOddNumber <= number) {
         sum += currentOddNumber;
+        currentOddNumber += 2;
     }
     return sum;
 }
+
+console.log(recursiveOddSumTo(1));
+console.log(iterativeOddSumTo(1));
