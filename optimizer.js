@@ -1,12 +1,10 @@
 'use strict'
 function optimizer (data) {
     const objArray = Object.entries(data);
-    const modArray = objArray.map(a => a.map((b) => {
-        if (Number.isNaN(Number(b))) {
-          return b.toLowerCase();
-        } else {
-          return Number(b).toFixed(2)
-        }
-      }))
-    return Object.fromEntries(modArray);
+    const modArray = objArray.map(entryPair => 
+        entryPair.map((entry, index) => {
+        index === 0 ? entry = entry.toLowerCase() : entry = entry.toFixed(2);
+        return entry;
+     }))
+ return Object.fromEntries(modArray);
 }
