@@ -12,5 +12,3 @@ function durationBetweenDates (initalDateStr = "14 Jan 1992", endDateStr = "11 M
     const duration = DateDif / timeUnitsTable[timeUnit];
     return `${duration} ${timeUnit}`;
 }
-
-console.log(durationBetweenDates('15 Jan 1992', '13 jan 1992', 'hours'));
