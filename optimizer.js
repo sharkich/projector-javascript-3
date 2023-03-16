@@ -1,10 +1,14 @@
 'use strict'
-function optimizer (data) {
-    const objArray = Object.entries(data);
-    const modArray = objArray.map(entryPair => 
-        entryPair.map((entry, index) => {
-        index === 0 ? entry = entry.toLowerCase() : entry = entry.toFixed(2);
-        return entry;
-     }))
- return Object.fromEntries(modArray);
+
+const priceData = {
+  Apples: '23.4',
+  BANANAS: '48',
+  oRAngGEs: '48.7584',
+   };
+
+const optimizer = (data) => {
+  const modArray = Object.entries(data).map(([key, value]) => {
+    return [key, value] = [key.toLowerCase(), Number(value).toFixed(2)];
+  })
+  return Object.fromEntries(modArray);
 }
