@@ -1,6 +1,6 @@
 function recursiveOddSumTo(number) {
-    if (number <= 0) {
-      return 0;
+    if (number == 1) {
+      return 1;
     } else if (number % 2 === 1) {
       return number + recursiveOddSumTo(number - 2);
     } else {
