@@ -6,9 +6,12 @@ function durationBetweenDates (initalDateStr = "14 Jan 1992", endDateStr = "11 M
         hours: 3600000,
         days: 86400000
     }
-    const InitalDateObj = new Date(initalDateStr);
-    const EndDateObj = new Date(endDateStr);
-    const DateDif = Math.abs(EndDateObj - InitalDateObj);
-    const duration = DateDif / timeUnitsTable[timeUnit];
+    const initalDateObj = new Date(initalDateStr);
+    const endDateObj = new Date(endDateStr);
+    const dateDif = Math.abs(endDateObj - initalDateObj);
+    const duration = dateDif / timeUnitsTable[timeUnit];
+    if (isNaN(duration)) {
+        return 'Incorrenct entry. Please try again.';
+    }
     return `${duration} ${timeUnit}`;
 }
