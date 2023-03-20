@@ -13,9 +13,8 @@ console.log(recursiveOddSumTo(10)) // 25
 function iterativeOddSumTo(number) {
   let sum = 0; 
 
-  for (i = 1; i <= number; i++) {
-    if (i % 2 == 1)
-      sum = sum + i;
+  for (i = 1; i <= number; i += 2) {
+    sum = sum + i;
   }
 
   return (sum);
