@@ -1,0 +1,41 @@
+body {
+    color: blue;
+}
+
+.newLi {
+    border: 1px solid green;
+    padding: 4px;
+    margin: 4px;
+}
+
+.ul1 {
+    font-size: 2rem;
+}
+
+.red {
+    color: red;
+}
+
+
+.absolute {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 50%;
+    border: 1px solid red;
+    top: 0;
+    left: 0;
+}
+
+#title:before {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    border-radius: 50%;
+    border: 1px solid green;
+    top: 0;
+    left: 0;
+    content: '';
+}
