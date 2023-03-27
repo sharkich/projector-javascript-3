@@ -1,41 +1,31 @@
-body {
-    color: blue;
+.div {
+    margin: 16px;
+    padding: 16px;
+    border: 1px solid #666;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.newLi {
+#div1 {
+    background: steelblue;
+}
+
+#div2 {
+    background: gold;
+}
+
+.redBtn {
+    padding: 10px;
     border: 1px solid green;
-    padding: 4px;
-    margin: 4px;
+    background: red;
+    color: white;
 }
 
-.ul1 {
-    font-size: 2rem;
-}
-
-.red {
-    color: red;
-}
-
-
-.absolute {
+.mouse {
     position: absolute;
+    background: greenyellow;
+    border: 1px solid teal;
+    border-radius: 50%;
     width: 50px;
     height: 50px;
-    background-color: red;
-    border-radius: 50%;
-    border: 1px solid red;
-    top: 0;
-    left: 0;
-}
-
-#title:before {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: green;
-    border-radius: 50%;
-    border: 1px solid green;
-    top: 0;
-    left: 0;
-    content: '';
 }
