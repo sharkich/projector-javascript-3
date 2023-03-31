@@ -18,10 +18,11 @@ console.log('Workshop1 start');
     // by clicking on the button
     // by pressing enter
 // Delete a task
+
 // Mark a task as completed
+// Search tasks by name
 // Delete all completed tasks
 // Filter tasks by completed and uncompleted (different lists)
-// Search tasks by name
 
 // Save data to localStorage
 
@@ -38,7 +39,10 @@ const startApp = () => {
     };
 
     const onSubmit = (newTask) => {
-        tasksList.push(newTask);
+        tasksList.push({
+            name: newTask,
+            completed: false,
+        });
         updateList();
     };
 

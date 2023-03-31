@@ -9,7 +9,7 @@ export const renderList = (tasksList) => {
             <div class="form-check">
                 <label class="form-check-label">
                     <input class="checkbox" type="checkbox">
-                    ${task}
+                    ${task.name}
                     <i class="input-helper"></i>
                 </label>
             </div>
