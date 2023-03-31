@@ -4,6 +4,7 @@
 import { renderList } from './renderList.js';
 import { formListener } from './formListener.js';
 import { saveList, loadList } from './ls.js';
+import { listClickListener } from './listClickListener.js';
 
 /*
   Google: todo list html css template
@@ -38,6 +39,12 @@ const startApp = () => {
     };
 
     formListener(onSubmit);
+
+    listClickListener((index) => {
+        tasksList.splice(index, 1);
+        saveList(tasksList);
+        renderList(tasksList);
+    });
 };
 
 document.addEventListener('DOMContentLoaded', startApp);

@@ -3,7 +3,7 @@ const listElement = document.querySelector('#list');
 export const renderList = (tasksList) => {
     listElement.innerHTML = '';
 
-    tasksList.forEach((task) => {
+    tasksList.forEach((task, index) => {
         const taskElement = document.createElement('li');
         taskElement.innerHTML = `
             <div class="form-check">
@@ -13,7 +13,7 @@ export const renderList = (tasksList) => {
                     <i class="input-helper"></i>
                 </label>
             </div>
-            <a class="remove mdi mdi-close-circle-outline"></a>
+            <a class="remove mdi mdi-close-circle-outline" data-index="${index}"></a>
         `;
         listElement.append(taskElement);
     });
