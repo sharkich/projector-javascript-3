@@ -5,6 +5,8 @@ import { renderList } from './renderList.js';
 import { formListener } from './formListener.js';
 import { saveList, loadList } from './ls.js';
 import { listClickListener } from './listClickListener.js';
+import { formChangeListener } from './formChangeListener.js';
+import { byName } from './filters.js';
 
 /*
   Google: todo list html css template
@@ -18,9 +20,10 @@ console.log('Workshop1 start');
     // by clicking on the button
     // by pressing enter
 // Delete a task
-
-// Mark a task as completed
 // Search tasks by name
+
+
+// Mark a task as completed (1/2)
 // Delete all completed tasks
 // Filter tasks by completed and uncompleted (different lists)
 
@@ -51,6 +54,11 @@ const startApp = () => {
     listClickListener((index) => {
         tasksList.splice(index, 1);
         updateList();
+    });
+
+    formChangeListener((text) => {
+        const filteredTasks = tasksList.filter(byName(text));
+        renderList(filteredTasks);
     });
 };
 
