@@ -1,7 +1,7 @@
 const listElement = document.querySelector('#list');
 
 export const renderList = (tasksList) => {
-    console.log('render.tasksList', tasksList);
+    listElement.innerHTML = '';
 
     tasksList.forEach((task) => {
         const taskElement = document.createElement('li');

@@ -2,6 +2,7 @@
 
 
 import { renderList } from './renderList.js';
+import { formListener } from './formListener.js';
 
 /*
   Google: todo list html css template
@@ -24,7 +25,15 @@ console.log('Workshop1 start');
 
 const startApp = () => {
     console.log('Workshop1 startApp');
-    renderList(['Поспати', 'Поспати ще', 'Поспати ще трохи']);
+
+    const tasksList = ['Поспати', 'Поспати ще', 'Поспати ще трохи'];
+
+    renderList(tasksList);
+
+    formListener((newTask) => {
+        tasksList.push(newTask);
+        renderList(tasksList);
+    });
 };
 
 document.addEventListener('DOMContentLoaded', startApp);
