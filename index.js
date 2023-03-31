@@ -32,18 +32,21 @@ const startApp = () => {
 
     renderList(tasksList);
 
-    const onSubmit = (newTask) => {
-        tasksList.push(newTask);
+    const updateList = () => {
         saveList(tasksList);
         renderList(tasksList);
+    };
+
+    const onSubmit = (newTask) => {
+        tasksList.push(newTask);
+        updateList();
     };
 
     formListener(onSubmit);
 
     listClickListener((index) => {
         tasksList.splice(index, 1);
-        saveList(tasksList);
-        renderList(tasksList);
+        updateList();
     });
 };
 
