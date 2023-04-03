@@ -17,6 +17,15 @@ const handleClearClick = () => {
 };
 
 const handleOperatorClick = (event) => {
+    if (inputElement.value === '') {
+        return;
+    }
+    const NUMBERS_SYMBOLS = '01234567890.';
+    const lastIndex = inputElement.value.length - 1;
+    const lastChar = inputElement.value[lastIndex];
+    if (!NUMBERS_SYMBOLS.includes(lastChar)) {
+        inputElement.value = inputElement.value.slice(0, lastIndex);
+    }
     inputElement.value += event.target.innerHTML;
 };
 
