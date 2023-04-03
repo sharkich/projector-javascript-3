@@ -9,6 +9,17 @@ const clearElement = document.querySelector('.clear');
 const resultElement = document.querySelector('.result');
 
 const handleNumberClick = (event) => {
+    const lastIndex = inputElement.value.length - 1;
+    const lastChar = inputElement.value[lastIndex];
+    if (event.target.innerHTML === '.') {
+        if (!inputElement.value) {
+            inputElement.value = '0.';
+            return;
+        }
+        if (lastChar === '.') {
+            return;
+        }
+    }
     inputElement.value += event.target.innerHTML;
 };
 
