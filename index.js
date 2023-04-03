@@ -18,6 +18,7 @@ const handleClearClick = () => {
 
 const handleOperatorClick = (event) => {
     if (inputElement.value === '') {
+        inputElement.value = '0' + event.target.innerHTML;
         return;
     }
     const NUMBERS_SYMBOLS = '01234567890.';
