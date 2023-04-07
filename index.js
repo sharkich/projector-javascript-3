@@ -2,6 +2,7 @@
 
 const ballElement = document.getElementById('thimbleBall');
 const thimblesElements = Array.from(document.querySelectorAll('.sewingThimble'));
+const playButtonElement = document.getElementById('playButton');
 
 let currentBallPosition = null;
 
@@ -41,8 +42,10 @@ const mixThimble = () => {
 
 const handlePlay = () => {
     console.log('handlePlay');
+    playButtonElement.setAttribute('disabled', 'disabled');
     putBallToRandomThimble();
     showBall();
     setTimeout(() => hideBall(), 500);
     setTimeout(() => mixThimble(), 1000);
+    setTimeout(() => playButtonElement.removeAttribute('disabled'), 2000);
 };
