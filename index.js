@@ -11,9 +11,9 @@ const getRandomIndex = () => Math.floor(Math.random() * 3);
 
 const getCup = (index) => document.getElementById(`cup${index}`);
 
-const upThimble = () => {
+const upThimble = (index) => {
     console.log('upThimble', currentBallPosition);
-    getCup(currentBallPosition).classList.add('thimbleUp');
+    getCup(index === undefined ? currentBallPosition : index).classList.add('thimbleUp');
 };
 
 const downThimble = () => {
@@ -24,9 +24,9 @@ const downThimble = () => {
     getCup(currentBallPosition).classList.remove('thimbleUp');
 };
 
-const putBallToRandomThimble = () => {
+const putBall = (index) => {
     downThimble();
-    currentBallPosition = getRandomIndex();
+    currentBallPosition = index === undefined ? getRandomIndex() : index
     console.log('put.ball', currentBallPosition);
     ballElement.setAttribute('display', 'block');
     ballElement.setAttribute('class', `thimbleBallPosition${currentBallPosition}`);
@@ -34,7 +34,7 @@ const putBallToRandomThimble = () => {
 
 const removeBall = () => {
     console.log('removeBall');
-    ballElement.setAttribute('display', 'none');
+    ballElement.style.display = 'none';
 };
 
 const mixThimble = () => {
@@ -62,12 +62,23 @@ const mixThimble = () => {
 const handlePlay = () => {
     console.log('handlePlay');
     playButtonElement.setAttribute('disabled', 'disabled');
-    putBallToRandomThimble();
+    putBall();
     upThimble();
-    setTimeout(() => downThimble(), 500);
     setTimeout(() => {
-        // removeBall();
-        mixThimble();
+        downThimble()
+    }, 500);
+    setTimeout(() => {
+        let mixAmount = 0;
+        removeBall();
+        const mixId = setInterval(() => {
+            mixThimble();
+            mixAmount++;
+            if (mixAmount === MIX_AMOUNT) {
+                clearInterval(mixId);
+                putBall(currentBallPosition);
+                setTimeout(() => ballElement.style.display = 'block', 500);
+            }
+        }, 500);
     }, 1000);
     setTimeout(() => playButtonElement.removeAttribute('disabled'), 2000);
 };
