@@ -59,8 +59,15 @@ const mixThimble = () => {
     getCup(indexB).setAttribute('class', classesA);
 };
 
+const reset = () => {
+    getCup(0).setAttribute('class', 'sewingThimble thimble0');
+    getCup(1).setAttribute('class', 'sewingThimble thimble1');
+    getCup(2).setAttribute('class', 'sewingThimble thimble2');
+};
+
 const handlePlay = () => {
     console.log('handlePlay');
+    reset();
     playButtonElement.setAttribute('disabled', 'disabled');
     putBall();
     upThimble();
