@@ -2,45 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Calc</title>
+    <title>Game</title>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<div class="calculator">
-    <label><input class="input" readonly></label>
-    <div class="buttons">
-        <div class="operators">
-            <button class="operator">+</button>
-            <button class="operator">-</button>
-            <button class="operator">&times;</button>
-            <button class="operator">&divide;</button>
-        </div>
-        <div class="leftPanel">
-            <div class="numbers">
-                <button class="number">7</button>
-                <button class="number">8</button>
-                <button class="number">9</button>
-            </div>
-            <div class="numbers">
-                <button class="number">4</button>
-                <button class="number">5</button>
-                <button class="number">6</button>
-            </div>
-            <div class="numbers">
-                <button class="number">1</button>
-                <button class="number">2</button>
-                <button class="number">3</button>
-            </div>
-            <div class="numbers">
-                <button class="number">0</button>
-                <button class="number dot">.</button>
-                <button class="clear">C</button>
-            </div>
-        </div>
-        <button class="result">=</button>
+<section class="gameSection">
+    <div class="gameContainer" id="gameContainer">
+        <button class="sewingThimble thimble0" id="cup0"></button>
+        <button class="sewingThimble thimble1" id="cup1"></button>
+        <button class="sewingThimble thimble2" id="cup2"></button>
+        <div id="thimbleBall"></div>
     </div>
-</div>
+    <div class="playButtonContainer">
+        <button class="playButton" id="playButton">
+            Play
+        </button>
+    </div>
+</section>
+
 <script  src="./index.js" type="module"></script>
 </body>
 </html>
