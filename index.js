@@ -45,7 +45,6 @@ class Tomato extends Plant {
 }
 
 const a = new Apple('green', 'small', true);
-
 const b = new Tomato('red', 'middle', false);
 const c = new Apple('red', 'large', false);
 console.log(a, b, c, a === b);
@@ -59,3 +58,15 @@ console.log(a.size, b.size, a === b, a.size === b.size);
 a.fall();
 a.cut();
 b.cut();
+
+console.log('2' + '2');
+
+const margeHeight = (obj, height) => {
+    obj.height = height;
+    return obj;
+};
+
+const aa = margeHeight(a, 10);
+const bb = margeHeight(b, 20);
+
+console.log(aa, bb);
