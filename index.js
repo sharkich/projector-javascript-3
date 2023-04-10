@@ -9,6 +9,14 @@ class Plant {
     cut() {
         console.log('Cutting successful ' + this.color);
     }
+
+    setSize(size) {
+        if (['small', 'middle', 'large'].includes(size)) {
+            this.size = size;
+        } else {
+            throw new Error('Wrong size');
+        }
+    }
 }
 
 class Apple extends Plant {
@@ -37,12 +45,14 @@ class Tomato extends Plant {
 }
 
 const a = new Apple('green', 'small', true);
+
 const b = new Tomato('red', 'middle', false);
 const c = new Apple('red', 'large', false);
-
 console.log(a, b, c, a === b);
 
-b.size = 'small';
+const size = document.getElementById('size') ?? 'small';
+
+b.setSize(size);
 
 console.log(a.size, b.size, a === b, a.size === b.size);
 
