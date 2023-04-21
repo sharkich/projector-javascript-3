@@ -46,3 +46,12 @@ document.getElementById('form').addEventListener('submit', (event) => {
         messages.delete(message);
     }, 3000);
 });
+
+document.getElementById('table_body').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    if (event.target.classList.contains('delete')) {
+        event.target.parentElement.parentElement.remove();
+    }
+});
+

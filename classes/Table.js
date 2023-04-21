@@ -6,7 +6,6 @@ export class Table {
     }
 
     addBook(book) {
-        console.log('add book', book);
         const row = document.createElement('tr');
         row.innerHTML = this.generateRow(book);
         this.tableBody.append(row);
