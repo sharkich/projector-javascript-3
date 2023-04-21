@@ -1,17 +1,24 @@
 export class Form {
-    constructor({getName, getAuthor, getYear, getIsbn}) {
-        this.getName = getName;
-        this.getAuthor = getAuthor;
-        this.getYear = getYear;
-        this.getIsbn = getIsbn;
+    constructor({name, author, year, isbn}) {
+        this.name = name;
+        this.author = author;
+        this.year = year;
+        this.isbn = isbn;
     }
 
     getData () {
         return {
-            name: this.getName(),
-            author: this.getAuthor(),
-            year: this.getYear(),
-            isbn: this.getIsbn(),
+            name: this.name.value,
+            author: this.author.value,
+            year: this.year.value,
+            isbn: this.isbn.value,
         }
+    }
+
+    clear() {
+        this.name.value = '';
+        this.author.value = '';
+        this.year.value = '';
+        this.isbn.value = '';
     }
 }
