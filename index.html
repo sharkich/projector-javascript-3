@@ -2,9 +2,94 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OOP 1</title>
+    <title>OOP Workshop</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
+
+<form>
+    <h2>Add new book</h2>
+    <div class="field">
+        <label class="label">
+            <span class="label-name">Name</span>
+            <input name="name">
+        </label>
+    </div>
+    <div class="field">
+        <label class="label">
+            <span class="label-name">Author</span>
+            <input name="author">
+        </label>
+    </div>
+    <div class="field">
+        <label class="label">
+            <span class="label-name">Year</span>
+            <input name="year" type="number">
+        </label>
+    </div>
+    <div class="field">
+        <label class="label">
+            <span class="label-name">ISBN</span>
+            <input name="isbn">
+        </label>
+    </div>
+    <div>
+        <button type="submit" class="btn">Add</button>
+    </div>
+</form>
+
+<hr />
+
+<table>
+    <thead>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th>ISBN</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>Author</td>
+            <td>Year</td>
+            <td>ISBN</td>
+            <td><button>x</button></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Author</td>
+            <td>Year</td>
+            <td>ISBN</td>
+            <td><button>x</button></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Author</td>
+            <td>Year</td>
+            <td>ISBN</td>
+            <td><button>x</button></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Author</td>
+            <td>Year</td>
+            <td>ISBN</td>
+            <td><button>x</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr />
+
+<div class="alert success">
+    Book added successfully
+</div>
+
+<div class="alert failure">
+    Book added successfully
+</div>
+
 <script  src="./index.js"></script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+.field {
+    margin-bottom: 8px;
+}
+
+.label {
+    display: flex;
+}
+
+.label-name {
+    width: 60px;
+}
+
+.alert {
+    margin: 8px;
+    padding: 8px;
+    border: 1px solid #666;
+}
+
+.alert.success {
+    background-color: #cfc;
+}
+
+.alert.failure {
+    background-color: #fcc;
+}
