@@ -23,18 +23,26 @@ const table = new Table(
             <td><button class="delete">x</button></td>
     `
 );
-const messages = new Messages();
+const messages = new Messages(document.getElementById('messages'));
+
+const handleFormSubmit = () => {
+    const book = new Book(form.getData());
+
+    if (!book.isValid) {
+        return messages.addFail('Invalid form');
+    }
+
+    table.addBook(book);
+    form.clear();
+    return messages.addSuccess(`Book ${book.name} added!`);
+};
 
 document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const book = new Book(form.getData());
+    const message = handleFormSubmit();
 
-    if (book.isValid) {
-        table.addBook(book);
-        messages.addSuccess(`Book ${book.name} added!`);
-        form.clear();
-    } else {
-        messages.addFail('Invalid form');
-    }
+    setTimeout(() => {
+        messages.delete(message);
+    }, 3000);
 });
