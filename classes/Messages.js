@@ -21,8 +21,8 @@ export class Messages {
         return this.#renderDiv('failure', message);
     }
 
-    delete(message) {
-        message.remove();
+    delete(messageElement) {
+        messageElement.remove();
     }
 
 }

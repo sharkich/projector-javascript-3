@@ -1,9 +1,9 @@
 'use strict';
 
-import {Form} from "./classes/Form.js";
-import {Table} from "./classes/Table.js";
-import {Messages} from "./classes/Messages.js";
-import {Book} from "./classes/Book.js";
+import {Form} from "./prototype/Form.js";
+import {Table} from "./prototype/Table.js";
+import {Messages} from "./prototype/Messages.js";
+import {Book} from "./prototype/Book.js";
 
 console.log('log');
 
@@ -28,7 +28,7 @@ const messages = new Messages(document.getElementById('messages'));
 const handleFormSubmit = () => {
     const book = new Book(form.getData());
 
-    if (!book.isValid) {
+    if (!book.isValid()) {
         return messages.addFail('Invalid form');
     }
 
