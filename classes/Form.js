@@ -6,19 +6,12 @@ export class Form {
         this.getIsbn = getIsbn;
     }
 
-    isValid () {
-        return !!this.getName()
-            && !!this.getAuthor()
-            && !!this.getYear()
-            && !!this.getIsbn();
-    }
-
     getData () {
         return {
-            name: '',
-            author: '',
-            year: '',
-            isbn: '',
+            name: this.getName(),
+            author: this.getAuthor(),
+            year: this.getYear(),
+            isbn: this.getIsbn(),
         }
     }
 }

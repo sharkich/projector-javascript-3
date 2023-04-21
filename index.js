@@ -13,19 +13,27 @@ const form = new Form({
     getYear: () => document.getElementById('book_year').value,
     getIsbn: () => document.getElementById('book_isbn').value,
 });
-const table = new Table();
+const table = new Table(
+    document.getElementById('table_body'),
+    ({name, author, year, isbn}) => `
+            <td>${name}</td>
+            <td>${author}</td>
+            <td>${year}</td>
+            <td>${isbn}</td>
+            <td><button class="delete">x</button></td>
+    `
+);
 const messages = new Messages();
 
 document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    console.log(form.isValid());
+    const book = new Book(form.getData());
 
-    // if (form.isValid()) {
-    //     const book = new Book(form.getData());
-    //     table.addBook(book);
-    //     messages.addSuccess(`Book ${book.name} added!`);
-    // } else {
-    //     messages.addFail('Invalid form');
-    // }
+    if (book.isValid) {
+        table.addBook(book);
+        messages.addSuccess(`Book ${book.name} added!`);
+    } else {
+        messages.addFail('Invalid form');
+    }
 });

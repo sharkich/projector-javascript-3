@@ -1,9 +1,14 @@
 export class Book {
 
-    name = 'book name';
+    constructor({name, author, year, isbn}) {
+        this.name = name;
+        this.author = author;
+        this.year = year;
+        this.isbn = isbn;
+    }
 
-    constructor(data) {
-        console.log('create book', data);
+    get isValid() {
+        return !!this.name && !!this.author && !!this.year && !!this.isbn;
     }
 
 }
