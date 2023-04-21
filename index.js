@@ -1,11 +1,10 @@
 'use strict';
 
-import {Form} from "./prototype/Form.js";
-import {Table} from "./prototype/Table.js";
-import {Messages} from "./prototype/Messages.js";
-import {Book} from "./prototype/Book.js";
-
-console.log('log');
+import {Form} from "./classes/Form.js";
+import {Table} from "./classes/Table.js";
+import {Messages} from "./classes/Messages.js";
+import {Book} from "./classes/Book.js";
+import {BooksStorage} from "./classes/BooksStorage.js";
 
 const form = new Form({
     name: document.getElementById('book_name'),
@@ -25,15 +24,20 @@ const table = new Table(
 );
 const messages = new Messages(document.getElementById('messages'));
 
+const storage = new BooksStorage();
+const initialBooks = storage.getBooks();
+initialBooks.forEach(book => table.addBook(book));
+
 const handleFormSubmit = () => {
     const book = new Book(form.getData());
 
-    if (!book.isValid()) {
+    if (!book.isValid) {
         return messages.addFail('Invalid form');
     }
 
     table.addBook(book);
     form.clear();
+    storage.addBook(book);
     return messages.addSuccess(`Book ${book.name} added!`);
 };
 
