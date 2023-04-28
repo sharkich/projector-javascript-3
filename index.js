@@ -138,19 +138,43 @@
 
 // ReadableStream
 
-fetch('https://i.imgur.com/C5QXZ7u.mp4')
-    .then(async (response) => {
-        let received = 0;
-        const reader = response.body.getReader();
-        const contentLength = parseInt(response.headers.get('Content-Length'), 10);
+// fetch('https://i.imgur.com/C5QXZ7u.mp4')
+//     .then(async (response) => {
+//         let received = 0;
+//         const reader = response.body.getReader();
+//         const contentLength = parseInt(response.headers.get('Content-Length'), 10);
+//
+//         while (true) {
+//             const { done, value } = await reader.read();
+//             if (done) {
+//                 console.log('done');
+//                 break;
+//             }
+//             received += value.length/contentLength;
+//             console.log('Received: ', received);
+//         }
+//     });
 
-        while (true) {
-            const { done, value } = await reader.read();
-            if (done) {
-                console.log('done');
-                break;
-            }
-            received += value.length/contentLength;
-            console.log('Received: ', received);
-        }
-    })
+// const post = {
+//     title: 'Hello world',
+//     content: 'Lorem ipsum dolor sit amet',
+// }
+// const json = JSON.stringify({post});
+// console.log('json -->', json);//
+
+// const json = '{"post":{"title":"Hello world","content":"Lorem ipsum dolor sit amet"}}';
+// const post = JSON.parse(json);
+// console.log('post -->', post);
+
+const user =  {
+    name: 'John',
+};
+
+const post = {
+    title: 'Hello world',
+    content: 'Lorem ipsum dolor sit amet',
+    user
+}
+const copy = JSON.parse(JSON.stringify(post));
+copy.user.name = 'Vasyl';
+console.log('copy -->', post, copy);
