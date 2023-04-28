@@ -66,7 +66,7 @@
 
 fetch('https://www.anapioficeandfire.com/api/characters')
     .then((response) => {
-        console.log('response -->', response);
+        console.log('response1 -->', response);
         if (!response.ok) {
             return Promise.reject(response);
         }
@@ -74,7 +74,21 @@ fetch('https://www.anapioficeandfire.com/api/characters')
     })
     .then((data) => {
         console.log('data --> ', data);
+        const promises = data.map(({url}) => fetch(url));
+        return Promise.all(promises);
+    })
+    .then((responses) => {
+        const promises = responses.map((response) => {
+            if (!response.ok) {
+                return Promise.reject(response);
+            }
+            return response.json();
+        })
+        return Promise.all(promises);
+    })
+    .then(data => {
+        console.log('data2 --> ', data);
     })
     .catch((error) => {
         console.error('error -->', error);
-    })
+    });
