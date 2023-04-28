@@ -61,3 +61,20 @@
 //     .finally(() => {
 //         isLoading = false;
 //     });
+
+// Fetch
+
+fetch('https://www.anapioficeandfire.com/api/characters')
+    .then((response) => {
+        console.log('response -->', response);
+        if (!response.ok) {
+            return Promise.reject(response);
+        }
+        return response.json();
+    })
+    .then((data) => {
+        console.log('data --> ', data);
+    })
+    .catch((error) => {
+        console.error('error -->', error);
+    })
