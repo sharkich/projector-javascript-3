@@ -118,3 +118,20 @@
 //     .catch((error) => {
 //         console.error('error -->', error);
 //     });
+
+// AbortController
+
+const controller = new AbortController()
+
+fetch('https://www.anapioficeandfire.com/api/characters', {
+    signal: controller.signal
+})
+    .then((response) => {
+        console.log('response1 -->', response);
+        if (!response.ok) {
+            return Promise.reject(response);
+        }
+        return response.json();
+    });
+
+controller.abort();
