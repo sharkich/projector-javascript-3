@@ -121,17 +121,36 @@
 
 // AbortController
 
-const controller = new AbortController()
+// const controller = new AbortController()
+//
+// fetch('https://www.anapioficeandfire.com/api/characters', {
+//     signal: controller.signal
+// })
+//     .then((response) => {
+//         console.log('response1 -->', response);
+//         if (!response.ok) {
+//             return Promise.reject(response);
+//         }
+//         return response.json();
+//     });
+//
+// controller.abort();
 
-fetch('https://www.anapioficeandfire.com/api/characters', {
-    signal: controller.signal
-})
-    .then((response) => {
-        console.log('response1 -->', response);
-        if (!response.ok) {
-            return Promise.reject(response);
+// ReadableStream
+
+fetch('https://i.imgur.com/C5QXZ7u.mp4')
+    .then(async (response) => {
+        let received = 0;
+        const reader = response.body.getReader();
+        const contentLength = parseInt(response.headers.get('Content-Length'), 10);
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) {
+                console.log('done');
+                break;
+            }
+            received += value.length/contentLength;
+            console.log('Received: ', received);
         }
-        return response.json();
-    });
-
-controller.abort();
+    })
