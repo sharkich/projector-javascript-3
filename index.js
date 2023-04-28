@@ -64,31 +64,57 @@
 
 // Fetch
 
-fetch('https://www.anapioficeandfire.com/api/characters')
-    .then((response) => {
-        console.log('response1 -->', response);
-        if (!response.ok) {
-            return Promise.reject(response);
-        }
-        return response.json();
-    })
-    .then((data) => {
-        console.log('data --> ', data);
-        const promises = data.map(({url}) => fetch(url));
-        return Promise.all(promises);
-    })
-    .then((responses) => {
-        const promises = responses.map((response) => {
-            if (!response.ok) {
-                return Promise.reject(response);
-            }
-            return response.json();
-        })
-        return Promise.all(promises);
-    })
-    .then(data => {
-        console.log('data2 --> ', data);
-    })
-    .catch((error) => {
-        console.error('error -->', error);
-    });
+// fetch('https://www.anapioficeandfire.com/api/characters')
+//     .then((response) => {
+//         console.log('response1 -->', response);
+//         if (!response.ok) {
+//             return Promise.reject(response);
+//         }
+//         return response.json();
+//     })
+//     .then((data) => {
+//         console.log('data --> ', data);
+//         const promises = data.map(({url}) => fetch(url));
+//         return Promise.all(promises);
+//     })
+//     .then((responses) => {
+//         const promises = responses.map((response) => {
+//             if (!response.ok) {
+//                 return Promise.reject(response);
+//             }
+//             return response.json();
+//         })
+//         return Promise.all(promises);
+//     })
+//     .then(data => {
+//         console.log('data2 --> ', data);
+//     })
+//     .catch((error) => {
+//         console.error('error -->', error);
+//     });
+
+// POST
+
+// const post = {
+//     title: 'Hello world',
+//     content: 'Lorem ipsum dolor sit amet',
+// };
+//
+// fetch('http://jsonplaceholder.typicode.com/posts', {
+//     method: 'POST',
+//     body: JSON.stringify({post}),
+//     headers: {
+//         'Content-type': 'application/json; charset=UTF-8',
+//     },
+//     credentials: 'include',
+// })
+//     .then((response) => {
+//         console.log('response1 -->', response);
+//         if (!response.ok) {
+//             return Promise.reject(response);
+//         }
+//         return response.json();
+//     })
+//     .catch((error) => {
+//         console.error('error -->', error);
+//     });
