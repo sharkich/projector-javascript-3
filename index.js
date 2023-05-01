@@ -58,22 +58,26 @@
 // new Array(10000000000000)
 
 // Function sum of two numbers
-function sum(a, b) {
-    if (typeof a !== 'number' || typeof b !== 'number') {
-        throw new Error('Arguments must be numbers');
-    }
-    return a + b;
+// function sum(a, b) {
+//     if (typeof a !== 'number' || typeof b !== 'number') {
+//         throw new Error('Arguments must be numbers');
+//     }
+//     return a + b;
+// }
+// sum(1, '2')
+
+function loadingData(id) {
+    console.log('start');
+    return fetch(`https://swapi.dev/api/films/${id}/`)
+        .then((movieResponse) => {
+            return movieResponse.json()();
+        });
 }
 
-function loadingData() {
-    console.log('app start');
-    console.log(sum(1, '2'));
-    console.log('app finish');
-}
-
-function tryLoadingData() {
+async function tryLoadingData() {
     try {
-        loadingData();
+        const movie = await loadingData(1);
+        console.log(movie);
     } catch (error) {
         console.log('error ->', error.name, ':', error.message);
     } finally {
