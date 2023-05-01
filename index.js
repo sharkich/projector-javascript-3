@@ -66,23 +66,60 @@
 // }
 // sum(1, '2')
 
-function loadingData(id) {
-    console.log('start');
-    return fetch(`https://swapi.dev/api/films/${id}/`)
-        .then((movieResponse) => {
-            return movieResponse.json()();
-        });
-}
+// function loadingData(id) {
+//     console.log('start');
+//     return fetch(`https://swapi.dev/api/films/${id}/`)
+//         .then((movieResponse) => {
+//             return movieResponse.json()();
+//         });
+// }
+//
+// async function tryLoadingData() {
+//     try {
+//         const movie = await loadingData(1);
+//         console.log(movie);
+//     } catch (error) {
+//         console.log('error ->', error.name, ':', error.message);
+//     } finally {
+//         console.log('finally');
+//     }
+// }
+//
+// tryLoadingData();
 
-async function tryLoadingData() {
-    try {
-        const movie = await loadingData(1);
-        console.log(movie);
-    } catch (error) {
-        console.log('error ->', error.name, ':', error.message);
-    } finally {
-        console.log('finally');
+
+// Custom Error
+
+class CustomError extends Error {
+    constructor(name, message) {
+        super(message);
+        this.name = name;
+    }
+    isError(name) {
+        return  this.name === name;
     }
 }
 
-tryLoadingData();
+class WrongTypeError extends CustomError {
+    constructor(message) {
+        super('WrongTypeError', message);
+    }
+}
+
+function sum(a, b) {
+    null.qwe;
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new WrongTypeError('Arguments must be numbers');
+    }
+    return a + b;
+}
+
+try {
+    sum(1, '2')
+} catch (error) {
+    if (error.isError?.('WrongTypeError')) {
+        console.log('error1 ->', error.name, ':', error.message);
+    } else {
+        console.log('error.any ->', error.name, ':', error.message);
+    }
+}
