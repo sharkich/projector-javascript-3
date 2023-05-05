@@ -58,6 +58,9 @@ class UI {
         alert.className = 'alert alert-danger';
         alert.innerHTML = `<h4 class="alert-heading">${error.name}</h4><p>${error.message}</p>`;
         this.alertsElement.appendChild(alert);
+        setTimeout(() => {
+            alert.remove();
+        }, 2000);
     }
 }
 
