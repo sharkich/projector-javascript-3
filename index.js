@@ -1,10 +1,11 @@
 'use strict';
 
 class UI {
-    constructor(searchUserInputElement, formElement, profileElement) {
+    constructor(searchUserInputElement, formElement, profileElement, alertsElement) {
         this.searchUserInputElement = searchUserInputElement;
         this.formElement = formElement;
         this.profileElement = profileElement;
+        this.alertsElement = alertsElement;
         this.searchUserInput = '';
     }
 
@@ -53,13 +54,21 @@ class UI {
     }
 
     renderError(error) {
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-danger';
+        alert.innerHTML = `<h4 class="alert-heading">${error.name}</h4><p>${error.message}</p>`;
+        this.alertsElement.appendChild(alert);
     }
 }
 
 class API {
     async getUserData(input) {
         const response = await fetch(`https://api.github.com/users/${input}`);
-        return await response.json();
+        const data = await response.json();
+        if (data.message === 'Not Found') {
+            throw new Error(`User "${input}" not found`);
+        }
+        return data;
     }
 }
 
@@ -67,6 +76,7 @@ const ui = new UI(
     document.querySelector('.searchUser'),
     document.getElementById('form'),
     document.getElementById('profile'),
+    document.getElementById('alerts'),
 );
 const api = new API();
 
@@ -75,11 +85,11 @@ const run = () => {
 
     const searchUser = async (input) => {
         try {
-            console.log('input ->', input);
             const userData = await api.getUserData(input);
-            console.log('userData ->', userData);
+            console.log('userData', userData);
             ui.renderUserData(userData);
         } catch (error) {
+            console.log('error', error);
             ui.renderError(error);
         }
     };
