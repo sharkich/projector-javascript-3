@@ -1,17 +1,23 @@
 'use strict';
 
+const CLIENT_ID = 'd9308aacf8b204d361fd';
+const CLIENT_SECRET = '84969aeef73956f4ec9e8716d1840532802bb81b';
+
 class UI {
-    constructor(searchUserInputElement, formElement, profileElement, alertsElement) {
+    constructor(searchUserInputElement, formElement, profileElement, alertsElement, loadingElement) {
         this.searchUserInputElement = searchUserInputElement;
         this.formElement = formElement;
         this.profileElement = profileElement;
         this.alertsElement = alertsElement;
+        this.loadingElement = loadingElement;
         this.searchUserInput = '';
+
+        this.hideLoading();
     }
 
     onInputChange(callback) {
         this.searchUserInputElement.addEventListener('keyup', (event) => {
-            this.searchUserInput = event.target.value;
+            this.searchUserInput = event.target.value.trim();
             if (callback) {
                 callback(this.searchUserInput);
             }
@@ -23,6 +29,10 @@ class UI {
             event.preventDefault();
             callback(this.searchUserInput);
         });
+    }
+
+    removeUserData() {
+        this.profileElement.innerHTML = '';
     }
 
     renderUserData(user) {
@@ -62,11 +72,22 @@ class UI {
             alert.remove();
         }, 2000);
     }
+
+    showLoading() {
+        this.loadingElement.style.display = 'block';
+    }
+
+    hideLoading() {
+        this.loadingElement.style.display = 'none';
+    }
 }
 
 class API {
     async getUserData(input) {
-        const response = await fetch(`https://api.github.com/users/${input}`);
+        if (!input) {
+            throw new Error('Please enter a username');
+        }
+        const response = await fetch(`https://api.github.com/users/${input}?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`);
         const data = await response.json();
         if (data.message === 'Not Found') {
             throw new Error(`User "${input}" not found`);
@@ -80,6 +101,7 @@ const ui = new UI(
     document.getElementById('form'),
     document.getElementById('profile'),
     document.getElementById('alerts'),
+    document.getElementById('loading'),
 );
 const api = new API();
 
@@ -88,12 +110,16 @@ const run = () => {
 
     const searchUser = async (input) => {
         try {
+            ui.removeUserData();
+            ui.showLoading();
             const userData = await api.getUserData(input);
             console.log('userData', userData);
             ui.renderUserData(userData);
         } catch (error) {
             console.log('error', error);
             ui.renderError(error);
+        } finally {
+            ui.hideLoading();
         }
     };
 
