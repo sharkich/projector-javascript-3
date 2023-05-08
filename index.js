@@ -8,25 +8,16 @@ console.log(URL);
 class UI {
     #formElement = null;
     #inputElement = null;
-    #input = '';
 
     constructor(formElement, inputElement) {
         this.#formElement = formElement;
         this.#inputElement = inputElement;
-
-        this.#subscribeToInputChange();
-    }
-
-    #subscribeToInputChange() {
-        this.#inputElement.addEventListener('keyup', (event) => {
-            this.#input = event.target.value;
-        });
     }
 
     onSubmit(callback) {
         this.#formElement.addEventListener('submit', (event) => {
             event.preventDefault();
-            callback(this.#input);
+            callback(this.#inputElement.value);
         });
     }
 
