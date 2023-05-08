@@ -20,7 +20,7 @@ export class UI {
 
     #buildCityWeatherMarkup(cityWeather) {
         return `
-            <h2 class="city-name" data-name="${cityWeather.name},${cityWeather.sys.country}">
+            <h2 class="city-name" data-name="${cityWeather.name},${cityWeather.sys.country}" data-city="${cityWeather.name}">
               <span>${cityWeather.name}</span>
               <sup>${cityWeather.sys.country}</sup>
             </h2>
@@ -62,5 +62,19 @@ export class UI {
 
     focusInput() {
         this.#inputElement.focus();
+    }
+
+    #isCityAdded(cityElement, cityName) {
+        return cityElement.querySelector('.city-name').dataset.city === cityName;
+    }
+
+    isCityAlreadyAdded(cityName) {
+        const cityElements = this.#listElement.querySelectorAll('.city');
+        for (const cityElement of cityElements) {
+            if (this.#isCityAdded(cityElement, cityName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

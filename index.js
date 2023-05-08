@@ -16,8 +16,11 @@ const run = () => {
     ui.onSubmit(async (cityName) => {
         try {
             ui.showLoading();
+            if (ui.isCityAlreadyAdded(cityName)) {
+                ui.clearForm();
+                throw new Error('City already added');
+            }
             const cityWeather = await api.getCityWeather(cityName);
-            console.log(cityWeather);
             ui.renderCityWeather(cityWeather);
             ui.clearMessage();
             ui.clearForm();
