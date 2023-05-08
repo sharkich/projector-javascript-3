@@ -48,4 +48,11 @@ export class UI {
     renderError(error) {
         this.#messageElement.textContent = `${error.name}: ${error.message}`;
     }
+
+    showLoading() {
+        this.#messageElement.textContent = 'Loading...';
+    }
+    clearMessage() {
+        this.#messageElement.textContent = '';
+    }
 }

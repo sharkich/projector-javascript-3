@@ -15,9 +15,11 @@ const run = () => {
     console.log('run');
     ui.onSubmit(async (cityName) => {
         try {
+            ui.showLoading();
             const cityWeather = await api.getCityWeather(cityName);
             console.log(cityWeather);
             ui.renderCityWeather(cityWeather);
+            ui.clearMessage();
         } catch (error) {
             ui.renderError(error);
         }
