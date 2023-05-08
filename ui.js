@@ -2,11 +2,13 @@ export class UI {
     #formElement = null;
     #inputElement = null;
     #listElement = null;
+    #messageElement = null;
 
-    constructor(formElement, inputElement, listElement) {
+    constructor(formElement, inputElement, listElement, messageElement) {
         this.#formElement = formElement;
         this.#inputElement = inputElement;
         this.#listElement = listElement;
+        this.#messageElement = messageElement;
     }
 
     onSubmit(callback) {
@@ -41,5 +43,9 @@ export class UI {
         liElement.classList.add('city');
         liElement.innerHTML = this.#buildCityWeatherMarkup(cityWeather);
         this.#listElement.appendChild(liElement);
+    }
+
+    renderError(error) {
+        this.#messageElement.textContent = `${error.name}: ${error.message}`;
     }
 }

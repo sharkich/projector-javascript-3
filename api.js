@@ -8,6 +8,10 @@ export class API {
     async getCityWeather(cityName) {
         const response = await fetch(this.#buildUrl(cityName));
         const data = await response.json();
+        console.log(data);
+        if (data.cod === '404') {
+            throw new Error(data.message);
+        }
         return data;
     }
 }

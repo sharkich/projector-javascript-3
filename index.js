@@ -7,15 +7,20 @@ const ui = new UI(
     document.getElementById('form'),
     document.getElementById('input'),
     document.getElementById('list'),
+    document.getElementById('message'),
 );
 const api = new API();
 
 const run = () => {
     console.log('run');
     ui.onSubmit(async (cityName) => {
-        const cityWeather = await api.getCityWeather(cityName);
-        console.log(cityWeather);
-        ui.renderCityWeather(cityWeather);
+        try {
+            const cityWeather = await api.getCityWeather(cityName);
+            console.log(cityWeather);
+            ui.renderCityWeather(cityWeather);
+        } catch (error) {
+            ui.renderError(error);
+        }
     });
 };
 
