@@ -20,8 +20,11 @@ const run = () => {
             console.log(cityWeather);
             ui.renderCityWeather(cityWeather);
             ui.clearMessage();
+            ui.clearForm();
         } catch (error) {
             ui.renderError(error);
+        } finally {
+            ui.focusInput();
         }
     });
 };

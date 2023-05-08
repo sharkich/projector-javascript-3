@@ -55,4 +55,12 @@ export class UI {
     clearMessage() {
         this.#messageElement.textContent = '';
     }
+
+    clearForm() {
+        this.#formElement.reset();
+    }
+
+    focusInput() {
+        this.#inputElement.focus();
+    }
 }
