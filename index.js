@@ -1,172 +1,204 @@
 `use strict`;
 
-// const createIterator = (_collection => {
-//     let index = 0;
-//     return {
-//         next: () => {
-//             const value = _collection[index];
-//             index++;
-//             return {
-//                 value,
-//                 done: index > _collection.length
-//             };
-//         }
-//     };
+// Set
+
+// const set1 = new Set();
+//
+// set1.add('red');
+// set1.add('blue');
+// set1.add('green');
+// set1.add('red');
+//
+// console.log('set ->', set1);
+
+// console.log('set ->', set1.has('blue'));
+// console.log('set ->', set1.has('red'));
+//
+// set1.delete('red');
+//
+// console.log('set ->', set1);
+// console.log('set ->', set1.has('red'));
+//
+// set1.clear();
+//
+// console.log('set ->', set1);
+// console.log('set ->', set1.has('red'));
+
+
+// const set2 = new Set([1, 2, 3, 4, 1, 4, 5, 7, 42, 'olol']);
+// console.log('set ->', set2);
+
+// set2.forEach((e) => console.log(e));
+
+// const set3 = new Set();
+// set3.add(42);
+// set3.add(456);
+// set3.add(12);
+// set3.add(7);
+// set3.add(100);
+
+// const [a, b, c, d] = set3;
+// console.log(a, b, c, d);
+
+// for (const a of set3) {
+//     console.log(a);
+// }
+
+// const user1 = {login: 'mail@gmail.com'};
+// const user2 = {login: 'mail@gmail.com'};
+//
+// const set4 = new Set();
+// set4.add(user1);
+// set4.add(user2);
+// set4.add({login: 'mail@gmail.com'});
+//
+// console.log('set ->', set4);
+
+// Map
+
+const user1 = {login: 'mail1@gmail.com'};
+const user2 = {login: 'mail2@gmail.com'};
+
+// const autorized = {
+//     [user1]: true,
+//     [user2]: true,
+// };
+
+// const autorized = new Map();
+// autorized.set(user1, true);
+// autorized.set(user2, true);
+// console.log(autorized);
+//
+// console.log('has ->', autorized.has(user1));
+// console.log('value ->', autorized.get(user1));
+// console.log('size ->', autorized.size);
+
+
+// const map1 = new Map([
+//     ['key', 'value'],
+//     [user1, true],
+//     [[1, 2, 3], '123'],
+//     [user1, 123222],
+// ]);
+// console.log(map1);
+//
+// map1.forEach((value, key) => {
+//     console.log('key ->', key, 'value ->', value);
 // });
-//
-// const collection = ['a', 'b', 'c', 'd'];
-//
-// const iterator = createIterator(collection);
 
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
+// for (const [key, value] of map1) {
+//     console.log(key, value);
+// }
 
-// for (let val of collection) {
-//     console.log(val);
+// map1.set(user1, false);
+// map1.set({login: 'mail1@gmail.com'}, 333);
+// map1.set(user2, 222);
+//
+// console.log(map1);
+
+// Weak
+
+// const users = new WeakMap();
+//
+// function getUser() {
+//     const user1 = {email: 'gmail'};
+//     users.set(user1, 'Hello');
+//     console.log('user1 ->', user1);
+//     const asd = [user1];
 // }
 //
-// console.log(collection);
-// console.log('123');
+// getUser();
+//
+// const users = {
+//     user1
+// }
+//
+// setTimeout(() => {
+//     console.log(users);
+// }, 10);
 
-// iterator for Object
+// Destruction
 
-const user = {
-    name: 'Vasia',
-    age: 42,
-    roles: ['admin', 'user'],
-    isAdmin: true
-};
+// const numbers = [42, 456, 123, 7, 55];
+// // const a = numbers[0];
+// // const b = numbers[1];
+// // const c = numbers[2];
+// const [a, b, ...c] = numbers;
+// console.log(a, b, c);
 
-// user[Symbol.iterator] = function() {
-//     const properties = Object.keys(this);
-//     let index = 0;
-//     return {
-//         next: () => {
-//             if (index > properties.length - 1) {
-//                 return {done: true, value: undefined};
+
+// const numbers = [42, 456];
+// const [a, b, c = 123] = numbers;
+// console.log(a, b, c);
+
+// Swap
+
+// let a = 123;
+// let b = 321;
+// [a, b] = [b, a];
+//
+// console.log('a ->', a, 'b ->', b);
+
+// const a = [1, 2, 3, 4];
+// const b = [10, 20, 30];
+// // const c = a.concat(b);
+// const c = [0, ...a, 777, ...b, 999];
+// console.log('c ->', c);
+
+// const userVasia = {
+//     name: 'Vasia',
+//     age: 42,
+//     address: {
+//         leve1: {
+//             level2: {
+//                 value: 123,
+//                 value2: 321,
 //             }
-//             const key = properties[index];
-//             const result = {
-//                 done: false,
-//                 value: this[key]
-//             };
-//             index++;
-//             return result;
 //         }
-//     };
-// }
-//
-// console.log(user);
-//
-// for (let val of user) {
-//     console.log(val);
-// }
-
-// const arr1 = ['a', 'b', 'c']
-// const [a, b] = user;
-// console.log(a, b);
-
-
-// const range = {
-//     from: 10,
-//     to: 15
+//     }
 // };
 //
-// range[Symbol.iterator] = function createRangeIterator() {
-//     let value = this.from;
+// const value = 213;
+// const {value: newValue, value2, value3 = '777'} = userVasia.address.leve1.level2;
+// console.log('name', newValue, value2, value3);
+
+// const roleAdmin = {
+//     role: 'admin',
+//     isAdmin: true
+// };
+//
+// const roleUser = {
+//     role: 'user',
+//     isAdmin: false
+// };
+//
+//
+// const userVasia = {
+//     name: 'Vasia',
+//     age: 42,
+// };
+//
+// function addAdminRole(user) {
 //     return {
-//         next: () => {
-//             return value <= this.to ?
-//                 {value: value++, done: false} :
-//                 {done: true};
-//         }
+//         ...user,
+//         ...roleAdmin
 //     };
-// };
-
-
-// const iterator = createRangeIterator(range);
-
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-
-// for (let val of range) {
-//     console.log(val);
-// }
-
-// const arr1 = ['a', 'b', 'c']
-// const [a, b] = user;
-// console.log(a, b);
-
-// const arr2 = [1, 2, 3, 4, 5];
-// const iterator = arr2[Symbol.iterator]();
-//
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-// console.log(iterator.next());
-
-// console.log([...'Abalagamaga']);
-
-// function* sayName() {
-//     yield 'Olia';
-//     yield 'Sashs';
-//     yield 'Kolia';
-//     yield 'Nina';
-//     return 'Vasia';
 // }
 //
-// const names = sayName();
+// const adminVasia = addAdminRole(userVasia);
+// console.log(userVasia, adminVasia);
 
-// console.log(names.next());
-// console.log(names.next());
-// console.log(names.next());
-// console.log(names.next());
-// console.log(names.next());
-// console.log(names.next());
-
-// for (let name of names) {
-//     console.log(name);
-// }
-
-function* gerateId(initValue, maxValue = 125) {
-    let id = initValue;
-    while (true) {
-        if (id > maxValue) {
-            return id;
-        }
-        yield id++;
-    }
-};
-
-const ids = gerateId(123);
-
-// console.log(ids.next());
-// console.log(ids.next());
-// console.log(ids.next());
-// console.log(ids.next());
-// console.log(ids.next());
-// console.log(ids.next());
-// console.log(ids.next());
-
-for (let id of ids) {
-    console.log(id);
+function Label({label}) {
+    return `Label: ${label}`
 }
+
+function Button({color, ...props}) {
+    return `Button: ${color}, ${Label(props)}`
+}
+
+const button = Button({
+    color: 'red',
+    label: 'Hello'
+});
+
+console.log(button);
