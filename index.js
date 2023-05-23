@@ -15,6 +15,8 @@ const GROUPS = [
     [e2, e4, e6],
 ];
 
+const resetButtonElement = document.querySelector('.reset');
+
 const PLAYERS = {
     PLAYER_1: 'X',
     PLAYER_2: 'O',
@@ -36,10 +38,17 @@ const tryFindWinner = () => GROUPS
         e2.innerText === e3.innerText
     );
 
+const isDraw = () => Array.from(buttonsElements).every((el) => !!el.innerText);
+
 const highlightWinner = (winner) =>
     winner.map((el) => {
         el.classList.add('winner');
     });
+
+const enableResetButton = () => {
+    console.log('ResetButton');
+    resetButtonElement.attributes.removeNamedItem('disabled');
+};
 
 const addEventListener = (buttonElement) => {
     buttonElement.addEventListener('click', () => {
@@ -49,10 +58,13 @@ const addEventListener = (buttonElement) => {
         buttonElement.innerHTML = generateButtonSymbol();
         const winner = tryFindWinner();
         if (winner) {
-            isGameFinished = true;
             highlightWinner(winner);
+        }
+        if (winner || isDraw()) {
+            isGameFinished = true;
+            enableResetButton();
             setTimeout(() => {
-                alert('win');
+                alert(winner ? 'win' : 'draw');
             }, 0);
         }
     });

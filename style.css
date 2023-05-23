@@ -32,3 +32,14 @@
 .winner {
   color: red;
 }
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+
+}
+
+.reset {
+  margin: 20px;
+  font-size: 2rem;
+}
