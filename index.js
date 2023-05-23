@@ -26,12 +26,17 @@ const generateButtonSymbol = () => {
     return isLastPlayer1 ? PLAYERS.PLAYER_2 : PLAYERS.PLAYER_1;
 }
 
-const isWin = () => GROUPS
-    .some(([e1, e2, e3]) =>
+const tryFindWinner = () => GROUPS
+    .find(([e1, e2, e3]) =>
         !!e1.innerText &&
         e1.innerText === e2.innerText &&
         e2.innerText === e3.innerText
     );
+
+const highlightWinner = (winner) =>
+    winner.map((el) => {
+        el.classList.add('winner');
+    });
 
 const addEventListener = (buttonElement) => {
     buttonElement.addEventListener('click', () => {
@@ -40,7 +45,9 @@ const addEventListener = (buttonElement) => {
             return;
         }
         buttonElement.innerHTML = generateButtonSymbol();
-        if (isWin()) {
+        const winner = tryFindWinner();
+        if (winner) {
+            highlightWinner(winner);
             setTimeout(() => {
                 alert('win');
             }, 0);
