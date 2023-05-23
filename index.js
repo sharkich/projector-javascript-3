@@ -16,6 +16,9 @@ const generateButtonSymbol = () => {
 const addEventListener = (buttonElement) => {
     buttonElement.addEventListener('click', () => {
         console.log('click');
+        if (buttonElement.innerHTML) {
+            return;
+        }
         buttonElement.innerHTML = generateButtonSymbol();
     });
 };
