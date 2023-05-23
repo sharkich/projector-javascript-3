@@ -21,6 +21,9 @@ const PLAYERS = {
 };
 
 let isLastPlayer1 = true;
+
+let isGameFinished = false;
+
 const generateButtonSymbol = () => {
     isLastPlayer1 = !isLastPlayer1;
     return isLastPlayer1 ? PLAYERS.PLAYER_2 : PLAYERS.PLAYER_1;
@@ -40,13 +43,13 @@ const highlightWinner = (winner) =>
 
 const addEventListener = (buttonElement) => {
     buttonElement.addEventListener('click', () => {
-        console.log('click');
-        if (buttonElement.innerHTML) {
+        if (isGameFinished || buttonElement.innerHTML) {
             return;
         }
         buttonElement.innerHTML = generateButtonSymbol();
         const winner = tryFindWinner();
         if (winner) {
+            isGameFinished = true;
             highlightWinner(winner);
             setTimeout(() => {
                 alert('win');
